@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Obtenir le chemin du répertoire du script, peu importe d'où il est lancé
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Construire le chemin vers le module compilé dans projet1
+CPP_MODULE_PATH="$SCRIPT_DIR/build/modules/projet1"
+
+# Construire le chemin vers comparaison.py dans projet2
+COMPARAISON_SCRIPT="$SCRIPT_DIR/modules/projet2/comparaison.py"
+
+# Exécuter comparaison.py avec le PYTHONPATH configuré pour inclure le module compilé
+PYTHONPATH="$CPP_MODULE_PATH:$PYTHONPATH" python3 "$COMPARAISON_SCRIPT"
